@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <header class="flex flex-col justify-between items-center w-full h-20">
+  <header class="flex flex-col justify-between items-center w-full 2xl:h-20">
       <Navbar></Navbar>
   </header>
 
