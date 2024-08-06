@@ -1,17 +1,20 @@
 <script setup>
+
  import SignUp from "@/components/SignUp.vue"
  import {reactive} from "vue"
   const cambioComponente = reactive({
     estado: false
   })
 
-const cambioEstado = () => {
-  cambioComponente.estado = true
-}
+  const cambioEstado = () => {
+    cambioComponente.estado = true
+  }
+
 </script>
 
 
 <template>
+
   <div v-if="!cambioComponente.estado" class="flex items-center justify-center min-h-screen bg-white-900 pt-0 w-full">
     <div class="card px-10 py-20 rounded-lg bg-azul-oscuro w-1/4 shadow-xl -mt-16">
       <h1 class="text-center text-5xl text-white mb-14">Ingresar</h1>

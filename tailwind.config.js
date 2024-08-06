@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily: ["Poppins", "sans-serif"],
       colors: {
-        'azul-oscuro': '#172B4D',
+        "azul-oscuro": "#172B4D",
+        "azul-hover": "#244276"
       },
     },
 
