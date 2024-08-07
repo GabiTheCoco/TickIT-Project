@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Login from '@/views/Login.vue'
 import Project from '@/views/Project.vue'
 
@@ -7,15 +8,47 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'login',
-      component: Login
+      name: 'proyectos',
+      component: Project,
+      meta: {requiresAuth: true}
     },
     {
-      path: '/proyectos',
-      name: 'proyectos',
-      component: Project
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {guest: true}
     }
+    
   ]
 })
+
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      getAuth(),
+      (user) => {
+        removeListener();
+        resolve(user)
+      },
+      reject
+    )
+  })
+}
+
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const isGuestRoute = to.matched.some((record) => record.meta.guest);
+  const currentUser = await getCurrentUser();
+
+  if (requiresAuth && !currentUser) {
+    next('/login');
+  } else if (isGuestRoute && currentUser) {
+    next('/');
+  } else {
+    next();
+  }
+
+});
+
 
 export default router
