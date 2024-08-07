@@ -1,13 +1,20 @@
 <script setup>
 
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, reactive } from 'vue';
   import Button from '@/components/Button.vue';
   import dataProyectos from "@/data/data.json"
   import CardProyecto from '@/components/vistaProyecto/CardProyecto.vue';
   import InfoProyecto from '@/components/vistaProyecto/InfoProyecto.vue';
+  import ModalProject from '@/components/ModalProject.vue';
 
   const proyectoSeleccionado = ref(dataProyectos[0]);
   const esActivo = ref(null);
+  const btnModal = reactive({
+    estado: {
+      type: Boolean,
+      default: false
+    }
+});
   
   const manejoSeleccionProyecto = (proyecto) => {
     const previousProyecto = proyectoSeleccionado.value;
@@ -27,11 +34,17 @@
 
   }
 
+  const abrirModal = ()=>{
+    btnModal.estado = !btnModal.estado;
+  }
+
   onMounted(() => {
     const firstProject = document.querySelector(`[data-id="1"]`);
     if (firstProject) {
       firstProject.classList.add("bg-gray-100");
     }
+
+    btnModal.estado = false;
   })
 
 </script>
@@ -41,7 +54,8 @@
     <div class="w-2/5 h-full flex flex-col justify-between 2xl:w-2/4">
       <div class="h-auto flex justify-between items-center px-2">
         <h1 class="text-3xl font-semibold text-black 2xl:text-4xl">Proyectos</h1>
-        <Button bg-color="bg-azul-hover" textColor="text-white" text="Crear Proyecto"/>
+        <Button @click="abrirModal" data-modal-target="crud-modal" data-modal-toggle="crud-modal" bg-color="bg-azul-hover" textColor="text-white" text="Crear Proyecto"></Button>
+
       </div>
       <div class="h-[85%] flex flex-col items-center justify-start gap-6 px-2 overflow-auto">
         <CardProyecto @click="manejoSeleccionProyecto(proyecto)" 
@@ -50,5 +64,8 @@
     </div>
     <InfoProyecto :pSelected="proyectoSeleccionado"/>
   </section>
+  <ModalProject v-if="btnModal.estado"></ModalProject>
 </template>
+
+
 
