@@ -8,7 +8,7 @@
   const auth = getAuth();
   const email = ref("");
   const password = ref("");
-  const errorMsg = ref("")
+  const errorMsg = ref("olas")
   const router = useRouter();
 
   const SignIn = () => {
@@ -39,9 +39,8 @@
             errorMsg.value = "Email or password was incorrect"
             break;
         }
-
-        console.log(error.message)
         
+        alert(errorMsg.value)
       })
   }
 
@@ -77,6 +76,7 @@
         <div class="flex flex-col justify-center gap-4">
           <input v-model="email" class="p-2  rounded w-full outline-none" placeholder="Email" type="email">
           <input v-model="password" class="p-2 rounded w-full outline-none" placeholder="Contraseña" type="password">
+          <p class="text-sm text-center w-full text-white">{{ errorMsg.value }}</p>
         </div>
         <div class="flex justify-between gap-5">
           <button @click.prevent="SignIn" class="bg-white hover:bg-gray-200 text-gray-800 font-semibold p-2 rounded w-full">Iniciar sesión</button>

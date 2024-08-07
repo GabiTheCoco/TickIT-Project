@@ -47,7 +47,7 @@
       <form class="flex flex-col justify-center gap-5">
           <input v-model="nombre" class="p-2  rounded w-full outline-none" placeholder="Nombre" type="text">
           <input v-model="email" class="p-2  rounded w-full outline-none" placeholder="Email" type="email">
-          <input v-model="password" class="p-2 rounded w-full outline-none" placeholder="Contraseña" type="password">
+          <input v-model="password" class="p-2 rounded w-full  outline-none" placeholder="Contraseña" type="password">
       </form>
       <div class="flex justify-between gap-5">
           <button @click="register" class="bg-white hover:bg-gray-200 text-gray-800 font-semibold p-2 rounded w-full">Registrarse</button>
