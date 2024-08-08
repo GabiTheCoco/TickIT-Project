@@ -50,7 +50,7 @@
 </script>
 
 <template>
-  <section class="min-h-[89%] p-8 flex justify-between items-center gap-10 2xl:p-12">
+  <section class="min-h-[89%] p-6 flex justify-between items-center gap-10 2xl:p-12">
     <div class="w-2/5 h-full flex flex-col justify-between 2xl:w-2/4">
       <div class="h-auto flex justify-between items-center px-2">
         <h1 class="text-3xl font-semibold text-black 2xl:text-4xl">Proyectos</h1>

@@ -12,12 +12,12 @@ import {getAuth} from "firebase/auth"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAejdBwAjlOy-psd2GZBkMYyUIm5SBfeeU",
-  authDomain: "vueauthproject-7f838.firebaseapp.com",
-  projectId: "vueauthproject-7f838",
-  storageBucket: "vueauthproject-7f838.appspot.com",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECTID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: "567538639198",
-  appId: "1:567538639198:web:4aa2318a9928c719c9efcf"
+  appId: import.meta.env.VITE_FIREBASE_APPID 
 };
 
 initializeApp(firebaseConfig);

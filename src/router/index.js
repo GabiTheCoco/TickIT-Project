@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Login from '@/views/Login.vue'
 import Project from '@/views/Project.vue'
+import Evento from '@/views/Evento.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,6 +11,12 @@ const router = createRouter({
       path: '/',
       name: 'proyectos',
       component: Project,
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/evento',
+      name: 'evento',
+      component: Evento,
       meta: {requiresAuth: true}
     },
     {

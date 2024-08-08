@@ -21,7 +21,7 @@ const toggleModal = () => {
   
   <div v-if="btnModal.estado" id="crud-modal" tabindex="-1" aria-hidden="true" class=" fixed top-0 right-0 left-0 z-50 w-full min-h-full flex justify-center items-center">
     <div class="fixed w-full h-full bg-black opacity-50"></div>
-      <div class="relative p-4 w-full max-w-md max-h-full ">
+      <div class="relative p-4 w-full max-w-5xl max-h-full">
           <!-- Modal content -->
           <div class="relative bg-white rounded-lg shadow text-black">
               <!-- Modal header -->
